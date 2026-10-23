@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b0b0f"><title>PopcornPlay — Discover Movies</title>
+<style>
+:root{color-scheme:dark;--bg:#0b0b0f;--panel:#15151c;--muted:#a6a6b3;--gold:#ffc928;--line:#2c2c36}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:#fff;font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}button,input{font:inherit}button{cursor:pointer;border:0}a{color:inherit}.top{position:sticky;top:0;z-index:5;background:#0b0b0feF;backdrop-filter:blur(16px);border-bottom:1px solid #ffffff12}.nav{max-width:1440px;margin:auto;padding:15px 4%;display:flex;align-items:center;gap:24px}.brand{font-weight:900;font-size:25px;white-space:nowrap;letter-spacing:-1px}.brand span{color:var(--gold)}.search{display:flex;max-width:520px;flex:1;margin-left:auto;gap:8px}.search input{width:100%;min-width:0;background:#1b1b23;border:1px solid #34343f;color:#fff;padding:11px 14px;border-radius:10px;outline:none}.search input:focus{border-color:var(--gold)}.search button,.primary{background:var(--gold);color:#151515;font-weight:800;border-radius:10px;padding:10px 16px}.navlinks{display:flex;gap:8px;overflow:auto;padding:0 4% 12px;max-width:1440px;margin:auto}.navlinks button{background:transparent;color:#c4c4ce;padding:8px 13px;border-radius:99px;white-space:nowrap}.navlinks button.active,.navlinks button:hover{background:#fff;color:#111}.wrap{max-width:1440px;margin:auto;padding:24px 4% 60px}.hero{min-height:330px;border-radius:22px;overflow:hidden;position:relative;background:linear-gradient(90deg,#101016 0%,#101016d9 45%,#10101625 100%),#191922;display:flex;align-items:end;padding:clamp(22px,5vw,56px);margin-bottom:35px}.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.42}.hero-content{position:relative;max-width:620px}.eyebrow{color:var(--gold);font-size:12px;font-weight:900;letter-spacing:2px;text-transform:uppercase}.hero h1{font-size:clamp(32px,5vw,58px);line-height:1.04;margin:10px 0}.hero p{color:#d2d2dc;max-width:550px}.section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:28px 0 16px}.section-head h2{margin:0;font-size:23px}.muted{color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:22px 14px}.card{min-width:0;cursor:pointer;transition:transform .18s}.card:hover{transform:translateY(-4px)}.poster{aspect-ratio:2/3;border-radius:12px;overflow:hidden;background:#20202a;position:relative}.poster img{width:100%;height:100%;object-fit:cover;display:block}.poster .noimg{height:100%;display:grid;place-items:center;color:#777;padding:12px;text-align:center}.rating{position:absolute;top:8px;left:8px;background:#09090cdd;border-radius:6px;padding:3px 7px;font-size:12px;font-weight:800}.card h3{font-size:14px;line-height:1.35;margin:9px 0 3px;white-space:normal}.card .year{font-size:12px;color:var(--muted)}#status{padding:12px 0;color:var(--muted)}.empty{padding:35px;text-align:center;color:var(--muted);grid-column:1/-1;background:var(--panel);border-radius:12px}.footer{border-top:1px solid var(--line);padding:25px 4%;color:var(--muted);font-size:12px;text-align:center}.modal{position:fixed;inset:0;z-index:20;display:none;overflow:auto;background:#000c;padding:22px}.modal.open{display:block}.detail{max-width:1000px;margin:25px auto;background:#14141b;border:1px solid #ffffff18;border-radius:18px;overflow:hidden;position:relative}.close{position:absolute;right:15px;top:15px;z-index:2;width:40px;height:40px;border-radius:50%;background:#000b;color:#fff;font-size:24px}.detail-hero{min-height:350px;position:relative;display:flex;align-items:end;padding:30px;background:linear-gradient(0deg,#14141b 0%,#14141bde 25%,#14141b20 100%)}.detail-hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:.5}.detail-info{position:relative;max-width:700px}.detail-info h2{font-size:clamp(28px,5vw,44px);line-height:1.1;margin:8px 0}.meta{color:#ddd;font-size:13px;display:flex;flex-wrap:wrap;gap:12px}.overview{color:#d2d2dc}.detail-body{padding:0 30px 30px}.actions{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}.secondary{background:#30303b;color:#fff;border-radius:10px;padding:10px 15px;font-weight:700}.streamlist{display:none}.playback-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:14px 0}.playback-controls label,.stream-details label{display:block;color:#c6c6d0;font-size:13px}.playback-controls select,.stream-details input{display:block;width:100%;margin-top:6px;background:#20202a;color:#fff;border:1px solid #3c3c49;border-radius:9px;padding:11px}.stream-details{margin:14px 0}.stream-details input{font-size:12px;overflow:hidden;text-overflow:ellipsis}.stream-details .actions{margin:10px 0}.streamlist{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}.stream{background:#252530;color:#fff;border:1px solid #3c3c49;padding:12px;border-radius:10px;text-align:left}.stream:hover{border-color:var(--gold)}.player{margin-top:16px;background:#000;border-radius:12px;overflow:hidden;display:none}.player.open{display:block}.player video,.player iframe{display:block;width:100%;aspect-ratio:16/9;border:0;background:#000}.player-note{padding:10px;color:#c6c6d0;font-size:12px}.hidden{display:none!important}@media(max-width:1100px){.grid{grid-template-columns:repeat(5,minmax(0,1fr))}}@media(max-width:800px){.grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:18px 10px}.nav{gap:12px}.brand{font-size:22px}.hero{min-height:280px}}@media(max-width:560px){.nav{flex-wrap:wrap;padding:12px 4%;gap:10px}.brand{font-size:22px}.search{order:2;flex-basis:100%;max-width:none}.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px 9px}.wrap{padding-top:16px}.hero{min-height:250px;padding:22px}.hero p{font-size:13px}.section-head h2{font-size:20px}.modal{padding:7px}.detail{margin:15px auto}.detail-hero{min-height:330px;padding:20px}.detail-body{padding:0 20px 22px}.card h3{font-size:13px}}@media(max-width:360px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>
+</head>
+<body>
+<header class="top"><div class="nav"><div class="brand">🍿 <span>Popcorn</span>Play</div><form id="searchForm" class="search"><input id="searchInput" placeholder="Search movies..." autocomplete="off" aria-label="Search movies"><button type="submit">Search</button></form></div><nav class="navlinks"><button class="active" data-feed="trending">Trending</button><button data-feed="popular">Popular</button><button data-feed="upcoming">Coming Soon</button></nav></header>
+<main class="wrap"><section class="hero"><img id="heroImage" class="hero-bg hidden" alt=""><div class="hero-content"><div class="eyebrow">Your movie night starts here</div><h1>Find your next favourite.</h1><p>Explore movies, discover stories, and browse titles in one place.</p><button class="primary" id="heroExplore">Explore movies ↓</button></div></section><div class="section-head"><h2 id="sectionTitle">Trending Movies</h2><span id="count" class="muted"></span></div><div id="status">Loading movies…</div><section id="grid" class="grid" aria-live="polite"></section></main>
+<footer class="footer">Movie information and images are provided by TMDB. This product uses the TMDB API but is not endorsed or certified by TMDB.</footer>
+<div id="modal" class="modal" role="dialog" aria-modal="true" aria-label="Movie details"><article class="detail"><button id="closeModal" class="close" aria-label="Close">×</button><section class="detail-hero"><img id="detailBackdrop" alt="" class="hidden"><div class="detail-info"><div class="eyebrow">Movie details</div><h2 id="detailTitle">Loading…</h2><div class="meta" id="detailMeta"></div><p id="detailOverview" class="overview"></p><div class="actions"><button id="playButton" class="primary">▶ Play</button><button id="trailerButton" class="secondary hidden">▶ Trailer</button></div></div></section><section class="detail-body"><h3>Playback options</h3><p id="playStatus" class="muted">Press Play to check available streams.</p>
+<div id="playbackControls" class="playback-controls hidden">
+  <label>Quality<select id="qualitySelect" aria-label="Playback quality"></select></label>
+  <label>Server<select id="serverSelect" aria-label="Playback server"></select></label>
+</div>
+<div id="streamDetails" class="stream-details hidden"><label for="streamUrl">Actual stream URL</label><input id="streamUrl" readonly spellcheck="false" aria-label="Actual stream URL"><div class="actions"><button id="copyStreamUrl" class="secondary">Copy link</button><button id="openStreamUrl" class="secondary">Open link</button></div></div>
+<div id="player" class="player"><video id="video" controls playsinline></video><iframe id="frame" class="hidden" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen referrerpolicy="no-referrer"></iframe><div class="player-note" id="playerNote">If playback does not start, try another server.</div></div>
+<div id="streamList" class="streamlist"></div><div id="cast" class="muted"></div></section></article></div>
+<script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.17/dist/hls.min.js"></script>
+<script>
+const grid=document.getElementById('grid'),statusEl=document.getElementById('status'),titleEl=document.getElementById('sectionTitle'),countEl=document.getElementById('count');
+const modal=document.getElementById('modal');let currentFeed='trending',currentMovie=null,hlsInstance=null;
+const image=(path,size='w500')=>path?'https://image.tmdb.org/t/p/'+size+path:'';
+async function api(url){const r=await fetch(url);const d=await r.json();if(!r.ok||d.success===false)throw new Error(d.error||d.status_message||'Request failed');return d;}
+function setFeedActive(feed){document.querySelectorAll('[data-feed]').forEach(b=>b.classList.toggle('active',b.dataset.feed===feed));}
+function renderMovies(movies){grid.replaceChildren();countEl.textContent=movies.length?movies.length+' titles':'';if(!movies.length){grid.innerHTML='<div class="empty">No movies found. Try another search.</div>';return;}for(const m of movies){const card=document.createElement('article');card.className='card';card.tabIndex=0;card.setAttribute('role','button');card.setAttribute('aria-label','Details for '+(m.title||m.name||'movie'));const poster=document.createElement('div');poster.className='poster';if(m.poster_path){const img=document.createElement('img');img.loading='lazy';img.alt=(m.title||m.name||'Movie')+' poster';img.src=image(m.poster_path);img.onerror=()=>{poster.innerHTML='<div class="noimg">Poster unavailable</div>';};poster.append(img);}else poster.innerHTML='<div class="noimg">Poster unavailable</div>';if(Number(m.vote_average)>0){const rating=document.createElement('span');rating.className='rating';rating.textContent='★ '+Number(m.vote_average).toFixed(1);poster.append(rating);}const h=document.createElement('h3');h.textContent=m.title||m.name||'Untitled';const year=document.createElement('div');year.className='year';year.textContent=(m.release_date||m.first_air_date||'').slice(0,4)||'Release date unknown';card.append(poster,h,year);card.addEventListener('click',()=>openDetails(m.id));card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openDetails(m.id);}});grid.append(card);}}
+async function loadFeed(feed){currentFeed=feed;setFeedActive(feed);titleEl.textContent=({trending:'Trending Movies',popular:'Popular Movies',upcoming:'Coming Soon'})[feed]||'Movies';statusEl.textContent='Loading movies…';grid.replaceChildren();try{const data=await api('/api/'+feed);const movies=data.results||[];statusEl.textContent='';renderMovies(movies);if(feed==='trending'&&movies[0]?.backdrop_path){const hero=document.getElementById('heroImage');hero.src=image(movies[0].backdrop_path,'w1280');hero.classList.remove('hidden');}}catch(e){statusEl.textContent='Could not load movies: '+e.message;}}
+document.querySelectorAll('[data-feed]').forEach(b=>b.addEventListener('click',()=>{document.getElementById('searchInput').value='';loadFeed(b.dataset.feed);}));
+document.getElementById('searchForm').addEventListener('submit',async e=>{e.preventDefault();const q=document.getElementById('searchInput').value.trim();if(!q){loadFeed(currentFeed);return;}setFeedActive('');titleEl.textContent='Search results';statusEl.textContent='Searching…';grid.replaceChildren();try{const d=await api('/api/search?query='+encodeURIComponent(q));statusEl.textContent='';renderMovies(d.results||[]);}catch(err){statusEl.textContent='Search failed: '+err.message;}});
+document.getElementById('heroExplore').addEventListener('click',()=>document.getElementById('grid').scrollIntoView({behavior:'smooth'}));
+function closeDetails(){modal.classList.remove('open');document.body.style.overflow='';stopPlayer();currentMovie=null;}
+document.getElementById('closeModal').addEventListener('click',closeDetails);modal.addEventListener('click',e=>{if(e.target===modal)closeDetails();});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDetails();});
+let playbackStreams=[], selectedServer=0, selectedQuality='';
+
+function streamRawUrl(stream){
+  return stream?.url || stream?.link || stream?.streamUrl || stream?.stream_url ||
+    stream?.embed || stream?.embedUrl || stream?.embed_url || stream?.src || '';
+}
+function safeUrl(value){
+  try { const u=new URL(value); return ['https:','http:'].includes(u.protocol)?u.href:null; }
+  catch { return null; }
+}
+function streamQuality(stream){
+  const text=[stream?.quality,stream?.resolution,stream?.label,stream?.name,stream?.title,stream?.height,stream?.url,stream?.link,stream?.embedUrl]
+    .filter(v=>v!==undefined&&v!==null).join(' ').toLowerCase();
+  const m=text.match(/(?:^|\D)(1080|720|480)\s*p?(?:\D|$)/i);
+  if(m) return m[1]+'p';
+  const height=Number(stream?.height || stream?.resolution);
+  if(height>=1000) return '1080p';
+  if(height>=700 && height<1000) return '720p';
+  if(height>=400 && height<700) return '480p';
+  return '';
+}
+function qualityRank(q){ return ({'1080p':3,'720p':2,'480p':1})[q]||0; }
+function isEmbed(stream,url){
+  const kind=String(stream?.type||stream?.format||'').toLowerCase();
+  return kind.includes('embed') || kind.includes('iframe') ||
+    /\/embed\b|\/e\/|player\.php|watch\?v=/i.test(new URL(url).pathname+new URL(url).search);
+}
+function stopPlayer(){
+  if(hlsInstance){hlsInstance.destroy();hlsInstance=null;}
+  const video=document.getElementById('video'),frame=document.getElementById('frame');
+  video.pause();video.removeAttribute('src');video.load();frame.src='about:blank';
+  frame.classList.add('hidden');video.classList.remove('hidden');
+  document.getElementById('player').classList.remove('open');
+}
+function clearPlayback(){
+  stopPlayer(); playbackStreams=[]; selectedServer=0; selectedQuality='';
+  document.getElementById('playbackControls').classList.add('hidden');
+  document.getElementById('streamDetails').classList.add('hidden');
+  document.getElementById('streamList').replaceChildren();
+}
+async function openDetails(id){
+  clearPlayback();currentMovie={id};modal.classList.add('open');document.body.style.overflow='hidden';
+  document.getElementById('detailTitle').textContent='Loading…';
+  document.getElementById('detailMeta').textContent='';document.getElementById('detailOverview').textContent='';
+  document.getElementById('playStatus').textContent='Press Play to check available streams.';
+  document.getElementById('playButton').disabled=false;document.getElementById('trailerButton').classList.add('hidden');
+  document.getElementById('cast').textContent='';
+  try{
+    const [m,c]=await Promise.all([api('/api/movie/'+id),api('/api/credits/'+id).catch(()=>({cast:[]}))]);
+    currentMovie=m;document.getElementById('detailTitle').textContent=m.title||'Untitled';
+    const meta=[m.release_date?.slice(0,4),m.runtime?m.runtime+' min':'',m.vote_average?'★ '+Number(m.vote_average).toFixed(1)+'/10':'',...(m.genres||[]).slice(0,3).map(g=>g.name)].filter(Boolean);
+    document.getElementById('detailMeta').textContent=meta.join('  •  ');
+    document.getElementById('detailOverview').textContent=m.overview||'No overview available.';
+    const backdrop=document.getElementById('detailBackdrop');
+    if(m.backdrop_path){backdrop.src=image(m.backdrop_path,'w1280');backdrop.classList.remove('hidden');}else backdrop.classList.add('hidden');
+    const trailer=(m.videos?.results||[]).find(v=>v.site==='YouTube'&&v.type==='Trailer');
+    if(trailer){const b=document.getElementById('trailerButton');b.classList.remove('hidden');b.onclick=()=>{
+      clearPlayback();const frame=document.getElementById('frame');frame.src='https://www.youtube-nocookie.com/embed/'+encodeURIComponent(trailer.key)+'?autoplay=1';
+      frame.classList.remove('hidden');document.getElementById('player').classList.add('open');document.getElementById('playerNote').textContent='Official trailer';
+    };}
+    const names=(c.cast||[]).slice(0,5).map(p=>p.name);
+    document.getElementById('cast').textContent=names.length?'Cast: '+names.join(', '):'TMDB ID: '+m.id;
+  }catch(e){document.getElementById('detailTitle').textContent='Could not load details';document.getElementById('detailOverview').textContent=e.message;}
+}
+function currentStream(){
+  const q=document.getElementById('qualitySelect').value;
+  const exact=playbackStreams.find(s=>s.serverIndex===selectedServer && s.quality===q);
+  if(exact)return exact;
+  if(!q) return playbackStreams.find(s=>s.serverIndex===selectedServer) || null;
+  return null;
+}
+function updateStreamDetails(autoplay=true){
+  stopPlayer();
+  const stream=currentStream(),st=document.getElementById('playStatus');
+  if(!stream){st.textContent='This server does not provide the selected quality. Choose another available server or quality.';document.getElementById('streamDetails').classList.add('hidden');return;}
+  const url=safeUrl(streamRawUrl(stream));
+  if(!url){st.textContent='This server did not return a valid HTTP(S) playback URL.';document.getElementById('streamDetails').classList.add('hidden');return;}
+  document.getElementById('streamDetails').classList.remove('hidden');
+  document.getElementById('streamUrl').value=url;
+  const quality=stream.quality||'Quality not specified by API';
+  st.textContent='Server '+(stream.serverIndex+1)+' · '+quality+' · Select another server if playback fails.';
+  if(!autoplay)return;
+  const frame=document.getElementById('frame'),video=document.getElementById('video');
+  document.getElementById('player').classList.add('open');
+  document.getElementById('playerNote').textContent='Server '+(stream.serverIndex+1)+' · '+quality+'. Browser playback depends on the stream host allowing cross-origin access.';
+  if(isEmbed(stream,url)){
+    video.classList.add('hidden');frame.classList.remove('hidden');frame.src=url;return;
+  }
+  frame.src='about:blank';frame.classList.add('hidden');video.classList.remove('hidden');
+  if(/\.m3u8(?:$|[?#])/i.test(url)){
+    if(video.canPlayType('application/vnd.apple.mpegurl')){video.src=url;video.play().catch(()=>{});}
+    else if(window.Hls&&Hls.isSupported()){
+      hlsInstance=new Hls();hlsInstance.loadSource(url);hlsInstance.attachMedia(video);
+      hlsInstance.on(Hls.Events.MANIFEST_PARSED,()=>video.play().catch(()=>{}));
+      hlsInstance.on(Hls.Events.ERROR,(_event,data)=>{
+        if(data?.fatal){document.getElementById('playerNote').textContent='HLS playback failed (possibly CORS, expired URL, or unsupported stream). Try another server or open the link.';}
+      });
+    }else{
+      document.getElementById('playerNote').textContent='This browser cannot play this HLS stream. Use Open link or try another server.';
+    }
+  }else if(/\.mp4(?:$|[?#])/i.test(url) || String(stream.type||'').toLowerCase().includes('mp4')){
+    video.src=url;video.play().catch(()=>{document.getElementById('playerNote').textContent='Playback could not start automatically. Press Play in the video controls or try another server.';});
+  }else{
+    // Unknown direct formats are attempted as browser video; iframe is reserved for identified embed links.
+    video.src=url;video.play().catch(()=>{document.getElementById('playerNote').textContent='This format may not be supported by the browser. Try another server or open the link.';});
+  }
+}
+document.getElementById('video').addEventListener('error',()=>{
+  if(document.getElementById('player').classList.contains('open'))
+    document.getElementById('playerNote').textContent='Video playback error. The host may block browser access, require headers, or the URL may have expired. Choose another server below.';
+});
+document.getElementById('serverSelect').addEventListener('change',e=>{selectedServer=Number(e.target.value);updateStreamDetails(true);});
+document.getElementById('qualitySelect').addEventListener('change',e=>{selectedQuality=e.target.value;updateStreamDetails(true);});
+document.getElementById('copyStreamUrl').addEventListener('click',async()=>{
+  const value=document.getElementById('streamUrl').value;if(!value)return;
+  try{await navigator.clipboard.writeText(value);document.getElementById('copyStreamUrl').textContent='Copied!';}
+  catch{const input=document.getElementById('streamUrl');input.select();document.execCommand('copy');document.getElementById('copyStreamUrl').textContent='Copy attempted';}
+  setTimeout(()=>document.getElementById('copyStreamUrl').textContent='Copy link',1600);
+});
+document.getElementById('openStreamUrl').addEventListener('click',()=>{
+  const url=safeUrl(document.getElementById('streamUrl').value);if(url)window.open(url,'_blank','noopener,noreferrer');
+});
+document.getElementById('playButton').addEventListener('click',async()=>{
+  if(!currentMovie?.id)return;
+  const btn=document.getElementById('playButton'),st=document.getElementById('playStatus');
+  btn.disabled=true;st.textContent='Checking available streams…';clearPlayback();
+  try{
+    const data=await api('/api/play/'+currentMovie.id);
+    // Existing service currently expected to return { streams: [...] }; do not fabricate missing streams/qualities.
+    const rawStreams=Array.isArray(data.streams)?data.streams:[];
+    playbackStreams=rawStreams.map(stream=>{
+      const url=safeUrl(streamRawUrl(stream));if(!url)return null;
+      return {...stream,quality:streamQuality(stream),safeUrl:url};
+    }).filter(Boolean).slice(0,3).map((stream,serverIndex)=>({...stream,serverIndex}));
+    if(!playbackStreams.length){st.textContent='No valid stream URLs were returned for this title. Try another movie later.';return;}
+    const qualities=['1080p','720p','480p'].filter(q=>playbackStreams.some(s=>s.quality===q));
+    const qSelect=document.getElementById('qualitySelect'),sSelect=document.getElementById('serverSelect');
+    qSelect.replaceChildren();sSelect.replaceChildren();
+    qualities.forEach(q=>{const o=document.createElement('option');o.value=q;o.textContent=q;qSelect.append(o);});
+    // Include a server only when the API returned a valid URL for it. Labels never expose provider names.
+    const servers=[...new Set(playbackStreams.map(s=>s.serverIndex))].sort((a,b)=>a-b);
+    servers.forEach(i=>{const o=document.createElement('option');o.value=String(i);o.textContent='Server '+(i+1);sSelect.append(o);});
+    selectedServer=servers[0];selectedQuality=qualities[0]||'';
+    sSelect.value=String(selectedServer);
+    if(qualities.length){qSelect.value=qualities[0];}
+    else{
+      const o=document.createElement('option');o.value='';o.textContent='Quality not specified';qSelect.append(o);qSelect.value='';
+    }
+    document.getElementById('playbackControls').classList.remove('hidden');
+    st.textContent=playbackStreams.length+' available server(s) found.';
+    updateStreamDetails(true);
+  }catch(e){st.textContent='Playback request failed: '+e.message;}
+  finally{btn.disabled=false;}
+});
+loadFeed('trending');
+</script>
+</body></html>
